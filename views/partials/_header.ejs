@@ -1,1 +1,10 @@
-<h1>Header</h1>
+<nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Issue Tracker</a>
+      <% if( title === "Project Page"){ %> 
+        <%- include('_issueForm'); %> 
+      <% }else{ %> 
+        <%- include('_projectForm'); %> 
+      <% } %>
+    </div>
+  </nav>
