@@ -1,0 +1,13 @@
+<div class="w-75 card p-3 m-auto my-4">
+    <h4 class="display-6 p-3 mb-2 bg-secondary text-white">
+      Project : <%= project.name %>
+    </h4>
+    <h5 class="display-7 p-3 mb-2 bg-light text-dark">
+      Author : <%= project.author %>
+    </h5>
+    <h6 class="display-7 p-3 mb-2 bg-info text-dark">
+      Description : <%= project.description %>
+    </h6>
+</div>
+
+<%-include('./partials/_issues'); %>

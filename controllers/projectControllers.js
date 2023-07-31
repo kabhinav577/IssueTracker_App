@@ -21,7 +21,7 @@ module.exports.project = async (req, res)=> {
         let project = await Project.findById(req.params.id).populate({ path: 'issues'});
 
         if(project) {
-            return res.render('project_page', {
+            return res.render('projectPage', {
                 title: 'Project Page',
                 project
             });
@@ -42,6 +42,7 @@ module.exports.createIssue = async (req, res)=> {
                 title: req.body.title,
                 description: req.body.description,
                 labels: req.body.labels,
+                project: req.params.id,
                 author: req.body.author,
             });
 
@@ -67,6 +68,21 @@ module.exports.createIssue = async (req, res)=> {
         }
     } catch (err) {
         console.log('Error in creating Issue', err);
+        return res.redirect('back');
+    }
+}
+
+
+module.exports.delete = async (req, res)=> {
+    try {
+        let project = await Project.findById(req.params.id);
+
+        project.deleteOne();
+
+        await Issue.deleteMany({project: req.params.id});
+        return res.redirect('back');
+    } catch (err) {
+        console.log('Error in deleting project', err);
         return res.redirect('back');
     }
 }

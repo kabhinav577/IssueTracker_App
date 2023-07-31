@@ -1,1 +1,30 @@
-<p>Issue Tracker | Homepage</p>
+<style>
+    .card {
+      width: 80% !important;
+    }
+</style>
+<div class="p-4">
+    <% for( let project of projects ) { %>
+      <div class="col card mb-3 m-auto">
+        <div class="card-header">
+          <strong> Name of the project : </strong>
+          <%= project.name %>
+        </div>
+        <div class="card-body">
+          <h6 class="card-subtitle mb-2 text-muted">
+            <strong> Author : </strong>
+            <%= project.author %>
+          </h6>
+          <p class="card-text">
+            <strong> Description : </strong>
+            <%= project.description %>
+          </p>
+
+          <div class="m-auto text-end">
+            <a href="/projects/delete/<%=project._id%>" class="btn btn-danger m-auto">Delete project</a>
+            <a href="/projects/<%=project._id%>" class="btn btn-primary m-auto">Open project</a>
+          </div>
+        </div>
+      </div>
+      <% } %>
+  </div>
